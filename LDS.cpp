@@ -2,44 +2,44 @@
 using namespace std;
 
 void menu() {
-    cout << "\n1) Добавить элемент в ЛДС\n";
-    cout << "2) Удалить элемент из ЛДС\n";
-    cout << "3) Вывести ЛДС\n";
-    cout << "0) Выйти из программы\n\n";
+	cout << "\n1) Добавить элемент в ЛДС\n";
+	cout << "2) Удалить элемент из ЛДС\n";
+	cout << "3) Вывести ЛДС\n";
+	cout << "0) Выйти из программы\n\n";
 }
 
 void err() {
-    cout << "\nТакая команда не найдена!\n";
+	cout << "\nТакая команда не найдена!\n";
 }
 
 struct Elem {
-    int inf;
-    Elem *next = NULL;
-    Elem *prev = NULL;
+	int inf;
+	Elem *next = NULL;
+	Elem *prev = NULL;
 };
 
 class LDS {
 private:
-    Elem *first, *last;
+	Elem *first, *last;
 public:
-    LDS() {
-        first = NULL;
-        last = NULL;
-    }
+	LDS() {
+		first = NULL;
+		last = NULL;
+	}
 
-    Elem *find(int x) {
-        Elem *temp = new Elem;
-        Elem *out = new Elem;
-        temp = first;
-        while (temp != NULL) {
-            if (temp->inf == x) {
-                out = temp;
-                return out;
-            }
-            temp = temp->next;
-        }
-        return NULL;
-    }
+	Elem *find(int x) {
+		Elem *temp = new Elem;
+		Elem *out = new Elem;
+		temp = first;
+		while (temp != NULL) {
+			if (temp->inf == x) {
+				out = temp;
+				return out;
+			}
+			temp = temp->next;
+		}
+		return NULL;
+	}
 
 	bool boolFind(int x) {
 		Elem *temp = new Elem;
@@ -58,36 +58,36 @@ public:
 		return p;
 	}
 
-    void add_first(int elem) {
-        if (first == NULL) {
-            first = (last = new Elem());
-            first->inf = (last->inf = elem);
-        }
-        else {
-            Elem *frst = new Elem();
-            frst->inf = elem;
-            frst->next = first;
-            first->prev = frst;
-            first = frst;
-        }
-    }
+	void add_first(int elem) {
+		if (first == NULL) {
+			first = (last = new Elem());
+			first->inf = (last->inf = elem);
+		}
+		else {
+			Elem *frst = new Elem();
+			frst->inf = elem;
+			frst->next = first;
+			first->prev = frst;
+			first = frst;
+		}
+	}
 
-    void add_last(int elem) {
-        if (first == NULL) {
-            first = (last = new Elem());
-            first->inf = (last->inf = elem);
-        }
-        else {
-            Elem *lst = new Elem();
-            lst->inf = elem;
-            lst->prev = last;
-            last->next = lst;
-            last = lst;
-        }
-    }
+	void add_last(int elem) {
+		if (first == NULL) {
+			first = (last = new Elem());
+			first->inf = (last->inf = elem);
+		}
+		else {
+			Elem *lst = new Elem();
+			lst->inf = elem;
+			lst->prev = last;
+			last->next = lst;
+			last = lst;
+		}
+	}
 
-    void add(int x, Elem *next) {
-        Elem *temp = new Elem;
+	void add(int x, Elem *next) {
+		Elem *temp = new Elem;
 		Elem *p = new Elem;
 		p = next->next;
 		next->next = temp;
@@ -95,7 +95,7 @@ public:
 		temp->next = p;
 		temp->prev = next;
 		if (p != NULL) p->prev = temp;
-    }
+	}
 
     void del_first() {
         if (first == NULL) return;
