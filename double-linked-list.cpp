@@ -97,67 +97,67 @@ public:
 		if (p != NULL) p->prev = temp;
 	}
 
-    void del_first() {
-        if (first == NULL) return;
-        if (first == last) {
-            first = (last = NULL);
-            return;
-        }
-        first = (first->next);
-        delete first->prev;
-        first->prev = NULL;
-    }
+	void del_first() {
+		if (first == NULL) return;
+		if (first == last) {
+			first = (last = NULL);
+			return;
+		}
+		first = (first->next);
+		delete first->prev;
+		first->prev = NULL;
+	}
 
-    void del_last() {
-        if (first == last) {
-            first = (last = NULL);
-            return;
-        }
-        last = last->prev;
-        delete last->next;
-        last->next = NULL;
-    }
+	void del_last() {
+		if (first == last) {
+			first = (last = NULL);
+			return;
+		}
+		last = last->prev;
+		delete last->next;
+		last->next = NULL;
+	}
 
-    void del(int x) {
-        Elem *temp = first;
-    	while (temp->inf != x) temp = temp->next;
-    	if (temp == NULL) return;
- 
-    	Elem *prev = temp->prev;
-    	Elem *next = temp->next;
-    	if (prev != NULL) prev->next = next;
-    	if (next != NULL) next->prev = prev; 
-    	delete temp;
-    }
+	void del(int x) {
+		Elem *temp = first;
+		while (temp->inf != x) temp = temp->next;
+		if (temp == NULL) return;
+		
+		Elem *prev = temp->prev;
+		Elem *next = temp->next;
+		if (prev != NULL) prev->next = next;
+		if (next != NULL) next->prev = prev; 
+		delete temp;
+	}
 
-    void print() {
-        Elem *temp = first;
-        if (temp != NULL) {
-            while (temp != NULL) {
-                cout << temp->inf << " ";
-                temp = temp->next;
-            }
-        }
-        else cout << "ЛДС пуст!\n";
-    }
+	void print() {
+		Elem *temp = first;
+		if (temp != NULL) {
+			while (temp != NULL) {
+				cout << temp->inf << " ";
+				temp = temp->next;
+			}
+		}
+		else cout << "ЛДС пуст!\n";
+	}
 
 	void choice() {
-        int cmd, cmd2;
-        cout << "Введите номер команды: ";
-        cin >> cmd;
+		int cmd, cmd2;
+		cout << "Введите номер команды: ";
+		cin >> cmd;
 
-        if (cmd == 1) {
-            cout << "Введите значение нового элемента ЛДС: ";
-            int val;
-            cin >> val;
+		if (cmd == 1) {
+			cout << "Введите значение нового элемента ЛДС: ";
+			int val;
+			cin >> val;
 
-            cout << "\t1) Добавить это значение в начало ЛДС\n";
-            cout << "\t2) Добавить это значение в конец ЛДС\n";
+			cout << "\t1) Добавить это значение в начало ЛДС\n";
+			cout << "\t2) Добавить это значение в конец ЛДС\n";
 			cout << "\t3) Добавить это значение перед существующим элементом ЛДС\n";
-            cout << "Введите номер команды: ";
+			cout << "Введите номер команды: ";
 
-            cin >> cmd2;
-            if (cmd2 == 1) {
+			cin >> cmd2;
+			if (cmd2 == 1) {
 				cout << "\t\t1) Добавить это значение в начало ЛДС слева\n";
 				cout << "\t\t2) Добавить это значение в начало ЛДС справа\n";
 
@@ -196,23 +196,23 @@ public:
             else if (cmd2 == 3) {
 				print();
 				cout << "\t\tПеред каким элементом вы хотите добавить новое значение?\n";
-				
+
 				int val2;
 				cin >> val2;
 				this->add(val, find(val2));
 				cout << "\t\tНовый элемент добавлен!\n";
 			}
-            
-			val = 0;
-            cmd2 = 0;
-            menu();
-            choice();
-        }
 
-        if (cmd == 2) {
-            if (first != NULL) {
-                cout << "\t1) Удалить первый элемент из ЛДС\n";
-                cout << "\t2) Удалить последний элемент из ЛДС\n";
+			val = 0;
+			cmd2 = 0;
+			menu();
+			choice();
+		}
+
+		if (cmd == 2) {
+			if (first != NULL) {
+				cout << "\t1) Удалить первый элемент из ЛДС\n";
+				cout << "\t2) Удалить последний элемент из ЛДС\n";
 				cout << "\t3) Удалить элемент по значению\n";
                 cout << "Введите номер команды: ";
                 cin >> cmd2;
