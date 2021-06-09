@@ -42,7 +42,7 @@ public:
 		return NULL;
 	}
 	
-	bool boolFind(int x) {
+	bool bool_find(int x) {
 		Elem *temp = new Elem;
 		bool t = false;
 		temp = first;
@@ -51,5 +51,30 @@ public:
 			if (temp->inf == x) t = true;
 			temp = temp->next;
 		}
+		
+		return t;
+	}
+	
+	Elem *next(int val) {
+		Elem *p = first;
+		while (p->inf != val) p = p->next;
+		return p;
+	}
+	
+	void add_first(int elem) {
+		if (first == NULL) {
+			first = (last = new Elem());
+			fisrt->inf = (last->inf = elem);
+		} else {
+			Elem *frst = new Elem();
+			frst->inf = elem;
+			frst->next = first;
+			first->prev = frst;
+			first = frst;
+		}
+	}
+	
+	void add_last(int elem) {
+		
 	}
 }
