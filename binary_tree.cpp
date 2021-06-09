@@ -32,8 +32,7 @@ public:
             node->right = NULL;
             head = node;
             cout << "Новый узел создан!\n";
-        }
-        else {
+        } else {
             node = head;
             Node *next = new Node;
 
@@ -46,9 +45,7 @@ public:
                         break;
                     }
                     cout << "Новый узел создан!\n";
-                }
-
-                else if (data < node->data) {
+                } else if (data < node->data) {
                     if (node->left != NULL) node = node->left;
                     else {
                         node->left = new Node;
@@ -56,9 +53,7 @@ public:
                         break;
                     }
                     cout << "Новый узел создан!\n";
-                }
-
-                else {
+                } else {
                     cout << "Узел с таким значением уже существует!\n";
                     break;
                 }
