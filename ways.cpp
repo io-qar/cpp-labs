@@ -34,9 +34,10 @@ void choice() {
         break;
     case 2:
         cout << "Введите количество вершин графа: ";
+        int n;
         cin >> n;
         cout << "Введите матрицу смежности:\n";
-        int d[n][n];
+        int **d = new int *[n];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++){
