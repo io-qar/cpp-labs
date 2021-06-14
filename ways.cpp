@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-void menu(){
+void menu() {
     cout << "\n\n1) Граф, заданный вариантом\n";
     cout << "2) Произвольный граф\n";
     cout << "0) Выход из программы\n";
@@ -25,8 +25,7 @@ void choice() {
     cout << "Введите номер команды: ";
     cin >> com;
 
-    switch (com)
-    {
+    switch (com) {
     case 1:
         Floid();
         menu();
