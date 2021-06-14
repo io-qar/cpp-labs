@@ -40,16 +40,16 @@ void choice() {
         int **d = new int *[n];
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++){
+            for (int j = 0; j < n; j++) {
                 cout << "V[" << i + 1 << "][" << j + 1 << "] = ";
                 cin >> d[i][j];
             }
         }
-        for (int k=0; k<n; ++k) {
-	        for (int i=0; i<n; ++i){
-		        for (int j=0; j<n; ++j){
+        for (int k = 0; k < n; ++k) {
+	        for (int i = 0; i < n; ++i) {
+		        for (int j = 0; j < n; ++j) {
 			        if (d[i][k] < INT_MAX && d[k][j] < INT_MAX)
-				        if(d[i][k]+d[k][j] < d[i][j]) d[i][j] = d[i][k] + d[k][j];
+				        if (d[i][k]+d[k][j] < d[i][j]) d[i][j] = d[i][k] + d[k][j];
                 }
             }
         }
@@ -70,9 +70,9 @@ void choice() {
 
 void Floid() {
     int n = 8;
-	for (int k=0; k<n; ++k)
-	    for (int i=0; i<n; ++i)
-		    for (int j=0; j<n; ++j)
+	for (int k = 0; k < n; ++k)
+	    for (int i = 0; i < n; ++i)
+		    for (int j = 0; j < n; ++j)
 			    if (V[i][k] < INT_MAX && V[k][j] < INT_MAX)
 				    if (V[i][k]+V[k][j] < V[i][j])
                         V[i][j] = V[i][k] + V[k][j];
