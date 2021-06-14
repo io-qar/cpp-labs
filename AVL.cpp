@@ -55,19 +55,13 @@ Node *rightRotate(Node *x) {
 }
 
 Node *insert(Node *node, int key) {
-	if (node == NULL) {
-		return new_node(key);
-	}
+	if (node == NULL) return new_node(key);
 	
-	if (key < node->key) {
-		node->left = insert(node->left, key);
-	}
+	if (key < node->key) node->left = insert(node->left, key);
 	else if (key > node->key) {
 		node->right = insert(node->right, key);
 	}
-	else {
-		return node;
-	}
+	else return node;
 
 	node->height = 1 + max(get_height(node->left), get_height(node->right));
 	int balance = get_balance(node);
@@ -76,15 +70,18 @@ Node *insert(Node *node, int key) {
 	if (balance > 1 && key < node->left->key) {
 		return rightRotate(node);
 	}
+	
 	//L-R
 	if (balance > 1 && key > node->left->key) {
 		node->left = leftRotate(node->left);
 		return rightRotate(node);
 	}
+	
 	//R-R
 	if (balance < -1 && key > node->right->key) {
 		return leftRotate(node);
 	}
+	
 	//R-L
 	if (balance < -1 && key < node->right->key) {
 		node->right = rightRotate(node->right);
@@ -97,9 +94,7 @@ Node *insert(Node *node, int key) {
 Node *minValueNode(Node *node) {
 	Node *current = node;
 
-	while (current->left != NULL) {
-		current = current->left;
-	}
+	while (current->left != NULL) current = current->left;
 
 	return current;
 }
@@ -123,21 +118,17 @@ Node *deleteNode(Node *root, int key) {
 				temp = root;
 				root = NULL;
 			}
-			else {
-				*root = *temp;
-			}	   
+			else *root = *temp;   
 			delete temp;
 		}
-		else
-		{
+		else {
 			Node *temp = minValueNode(root->right);
 			root->key = temp->key;
 			root->right = deleteNode(root->right, temp->key);
 		}
 	}
 
-	if (root == NULL)
-		return root;
+	if (root == NULL) return root;
 
 	root->height = 1 + max(get_height(root->left), get_height(root->right));
 
@@ -172,7 +163,7 @@ void printTree(Node *s, int level) {
 	}
 }
 
-void menu(){
+void menu() {
     cout << "\n1) Вставить узел\n";
 	cout << "2) Удалить узел\n";
 	cout << "3) Вывести дерево\n";
@@ -184,8 +175,7 @@ int main() {
 	Node *root = NULL;
     menu();
 	int n = 0;
-	do
-	{
+	do {
 		cout << "Введите номер команды: ";
 		cin >> n;
 
